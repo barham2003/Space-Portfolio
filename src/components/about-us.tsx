@@ -1,8 +1,12 @@
+import AnimateSection from "./ui/animate-section";
 import Heading from "./ui/heading";
 
 export default function About() {
   return (
-    <section className=" px-3 leading-[35px] md:leading-[50px]" id="about">
+    <AnimateSection
+      className=" px-3 leading-[35px] md:leading-[50px]"
+      id="about"
+    >
       <Heading>About Us</Heading>
       <p>
         Space is a forward-thinking organization dedicated to revolutionizing
@@ -19,6 +23,6 @@ export default function About() {
         evolving our methods and technologies to meet the changing needs of
         learners in today's fast-paced world.
       </p>
-    </section>
+    </AnimateSection>
   );
 }

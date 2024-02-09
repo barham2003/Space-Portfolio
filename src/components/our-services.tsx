@@ -1,10 +1,11 @@
 import { ourServices } from "@/lib/services";
 import Heading from "./ui/heading";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import AnimateSection from "./ui/animate-section";
 
 export default function OurServices() {
   return (
-    <section id="services">
+    <AnimateSection id="services">
       <Heading>Our Services</Heading>
 
       <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
@@ -21,6 +22,6 @@ export default function OurServices() {
           </Card>
         ))}
       </div>
-    </section>
+    </AnimateSection>
   );
 }
