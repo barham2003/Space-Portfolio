@@ -8,7 +8,7 @@ import AnimateDiv from "./ui/animate-div";
 export default function Introduction() {
   return (
     <AnimateSection
-      className="flex w-full flex-col items-center gap-4 md:flex-row md:justify-center md:gap-12"
+      className="flex w-full scroll-mt-48 flex-col items-center gap-4 md:flex-row md:justify-center md:gap-12 "
       id="main"
     >
       <AnimatePosition toRight={true}>
