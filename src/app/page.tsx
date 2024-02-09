@@ -1,10 +1,11 @@
 import Introduction from "@/components/introduction";
-import Image from "next/image";
+import OurServices from "@/components/our-services";
 
 export default function Home() {
   return (
-    <main className="flex flex-col gap-2 items-center w-full ">
+    <main className="flex h-full w-full flex-col items-center justify-around">
       <Introduction />
+      <OurServices />
     </main>
   );
 }
