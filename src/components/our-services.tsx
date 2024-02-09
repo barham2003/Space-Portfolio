@@ -17,7 +17,9 @@ export default function OurServices() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p>{service.description}</p>
+              <p className=" font-medium text-gray-500">
+                {service.description}
+              </p>
             </CardContent>
           </Card>
         ))}
