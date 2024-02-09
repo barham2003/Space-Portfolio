@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function OurServices() {
   return (
-    <section>
+    <section id="services">
       <Heading>Our Services</Heading>
 
       <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">

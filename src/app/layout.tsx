@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className=" relative h-[4300px] w-[100%] p-4">
+      <body className=" relative h-[4300px] w-[100%] !scroll-smooth p-4">
         <Navbar />
         {children}
       </body>

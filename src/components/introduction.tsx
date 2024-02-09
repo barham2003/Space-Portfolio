@@ -4,7 +4,10 @@ import Heading from "./ui/heading";
 
 export default function Introduction() {
   return (
-    <section className="flex w-full flex-col items-center gap-4 md:flex-row md:justify-center md:gap-12">
+    <section
+      className="flex w-full flex-col items-center gap-4 md:flex-row md:justify-center md:gap-12"
+      id="main"
+    >
       <Image src={spaceLogo} className=" w-[200px] lg:w-[400px]" alt="Logo" />
       <div className=" space-y-4 lg:w-[40%]">
         <Heading className="md:text-left">Welcome to Space</Heading>

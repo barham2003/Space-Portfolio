@@ -12,8 +12,8 @@ const navLinks = [
     href: "#about",
   },
   {
-    head: "Contanct",
-    href: "#contanct",
+    head: "Contact Us",
+    href: "#contact",
   },
 ] as const;
 

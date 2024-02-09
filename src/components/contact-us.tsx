@@ -5,7 +5,7 @@ import { Textarea } from "./ui/textarea";
 
 export default function ContactUs() {
   return (
-    <section className="flex w-full flex-col gap-4">
+    <section className="flex w-full flex-col gap-4" id="contact">
       <Heading>Contact Us</Heading>
       <Input placeholder="Email" />
       <Textarea placeholder="Type Your Content Here" className="h-[400px]" />
