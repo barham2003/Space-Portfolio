@@ -13,9 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className=" h-[2000px] w-[100%] p-4 selection:bg-slate-300">
-        {children}
-      </body>
+      <body className=" h-[4000px] w-[100%] p-4">{children}</body>
     </html>
   );
 }

@@ -10,7 +10,7 @@ export default function Heading({
   return (
     <h1
       className={twMerge(
-        "text-center text-2xl font-bold lg:text-6xl",
+        "my-8 text-center text-4xl font-bold lg:text-6xl",
         className,
       )}
     >

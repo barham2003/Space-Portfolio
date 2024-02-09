@@ -4,10 +4,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function OurServices() {
   return (
-    <section className="flex flex-col gap-8 ">
+    <section>
       <Heading>Our Services</Heading>
 
-      <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:px-56">
+      <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
         {ourServices.map((service, index) => (
           <Card key={index}>
             <CardHeader>
@@ -16,9 +16,7 @@ export default function OurServices() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-justify text-lg font-semibold lg:text-2xl">
-                {service.description}
-              </p>
+              <p>{service.description}</p>
             </CardContent>
           </Card>
         ))}
