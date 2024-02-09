@@ -1,9 +1,10 @@
+"use client";
 import Image from "next/image";
 import spaceLogo from "/public/space-logo.png";
 import navLinks from "@/lib/nav-links";
 import Link from "next/link";
 import AnimateNav from "./ui/animate-nav";
-
+import { motion } from "framer-motion";
 export default function Navbar() {
   return (
     <AnimateNav className="fixed bottom-8 z-50 flex w-[93%] rounded-full border border-black/10 bg-secondary p-1 drop-shadow-2xl">

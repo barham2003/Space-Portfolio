@@ -12,7 +12,11 @@ export default function Introduction() {
       id="main"
     >
       <AnimatePosition toRight={true}>
-        <Image src={spaceLogo} className=" w-[200px] lg:w-[400px]" alt="Logo" />
+        <Image
+          src={spaceLogo}
+          className=" w-[200px] min-w-[140px] lg:w-[400px]"
+          alt="Logo"
+        />
       </AnimatePosition>
       <AnimateDiv className="space-y-4 lg:w-[40%]">
         <Heading className="md:text-left">Welcome to Space</Heading>

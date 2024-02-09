@@ -14,7 +14,7 @@ export default function AnimateSection({
   return (
     <motion.section
       initial={{ opacity: 0 }}
-      whileInView={{ opacity: 100, transition: { delay: 0.2, duration: 1 } }}
+      whileInView={{ opacity: 100, transition: { delay: 0.5, duration: 1 } }}
       id={id}
       className={className}
       viewport={{
