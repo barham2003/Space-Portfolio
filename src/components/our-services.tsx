@@ -11,7 +11,7 @@ export default function OurServices() {
         {ourServices.map((service, index) => (
           <Card key={index}>
             <CardHeader>
-              <CardTitle className="text-center text-2xl font-bold lg:text-5xl">
+              <CardTitle className="text-center text-2xl font-bold lg:text-3xl">
                 {service.title}
               </CardTitle>
             </CardHeader>
