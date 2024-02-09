@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Navbar from "@/components/navbar";
 
 export const metadata: Metadata = {
   title: "Space",
@@ -13,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className=" h-[4300px] w-[100%] p-4">{children}</body>
+      <body className=" relative h-[4300px] w-[100%] p-4">
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }

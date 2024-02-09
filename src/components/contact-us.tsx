@@ -8,10 +8,8 @@ export default function ContactUs() {
     <section className="flex w-full flex-col gap-4">
       <Heading>Contact Us</Heading>
       <Input placeholder="Email" />
-      <Textarea placeholder="Type Your Content Here" className="h-[400px]">
-        {" "}
-      </Textarea>
-      <Button className=" font-bold">Send Email</Button>
+      <Textarea placeholder="Type Your Content Here" className="h-[400px]" />
+      <Button className=" rounded-full font-bold">Send Email</Button>
     </section>
   );
 }
