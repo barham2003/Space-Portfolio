@@ -1,4 +1,5 @@
 import About from "@/components/about-us";
+import ContactUs from "@/components/contact-us";
 import Introduction from "@/components/introduction";
 import OurServices from "@/components/our-services";
 
@@ -8,6 +9,7 @@ export default function Home() {
       <Introduction />
       <OurServices />
       <About />
+      <ContactUs />
     </main>
   );
 }
