@@ -4,7 +4,7 @@ import Heading from "./ui/heading";
 export default function About() {
   return (
     <AnimateSection
-      className=" px-3 leading-[35px] md:leading-[50px]"
+      className=" scroll-mt-20 px-3 leading-[35px] md:leading-[50px]"
       id="about"
     >
       <Heading>About Us</Heading>

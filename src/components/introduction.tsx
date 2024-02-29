@@ -16,6 +16,7 @@ export default function Introduction() {
           src={spaceLogo}
           className=" w-[200px] min-w-[140px] lg:w-[400px]"
           alt="Logo"
+          priority
         />
       </AnimatePosition>
       <AnimateDiv className="space-y-4 lg:w-[40%]">
