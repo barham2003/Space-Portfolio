@@ -3,6 +3,7 @@ export const ourServices = [
     title: "Courses",
     description:
       "Explore our comprehensive range of courses designed to enhance your skills and knowledge across a variety of disciplines. From technical subjects like coding and data science to creative pursuits like design and photography, we offer engaging, expert-led courses to help you unlock your full potential.",
+    link: "/courses",
   },
   {
     title: "Mobile App",

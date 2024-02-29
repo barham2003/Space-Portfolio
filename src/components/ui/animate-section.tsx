@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import React, { useDebugValue } from "react";
+import React from "react";
 
 export default function AnimateSection({
   children,
@@ -12,7 +12,7 @@ export default function AnimateSection({
   id: string;
 }) {
   return (
-    <motion.section
+    <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 100, transition: { delay: 0.5, duration: 1 } }}
       id={id}
@@ -22,6 +22,6 @@ export default function AnimateSection({
       }}
     >
       {children}
-    </motion.section>
+    </motion.div>
   );
 }

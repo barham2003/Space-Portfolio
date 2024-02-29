@@ -16,29 +16,31 @@ export default function ContactUs() {
 
   return (
     <AnimateSection id="contact" className="w-full">
-      <form action={formAction} className="flex w-full flex-col gap-4">
-        <Heading>Contact Us</Heading>
+      <section className="w-full">
+        <form action={formAction} className="flex w-full flex-col gap-4">
+          <Heading>Contact Us</Heading>
 
-        <Input placeholder="Email" type="email" name="senderEmail" />
-        <Textarea
-          placeholder="Type Your Content Here"
-          className="h-[400px]"
-          name="message"
-        />
-        <span
-          className={twMerge(
-            "rounded-full p-2 text-center text-sm",
-            done === "success" && " bg-green-100 text-green-900",
-            done === "yet" && " hidden",
-            done === "error" && "bg-red-100  text-red-600",
-          )}
-        >
-          {message}
-        </span>
-        <FormButton className=" rounded-full font-bold" type="submit">
-          Send Email
-        </FormButton>
-      </form>
+          <Input placeholder="Email" type="email" name="senderEmail" />
+          <Textarea
+            placeholder="Type Your Content Here"
+            className="h-[400px]"
+            name="message"
+          />
+          <span
+            className={twMerge(
+              "rounded-full p-2 text-center text-sm",
+              done === "success" && " bg-green-100 text-green-900",
+              done === "yet" && " hidden",
+              done === "error" && "bg-red-100  text-red-600",
+            )}
+          >
+            {message}
+          </span>
+          <FormButton className=" rounded-full font-bold" type="submit">
+            Send Email
+          </FormButton>
+        </form>
+      </section>
     </AnimateSection>
   );
 }
