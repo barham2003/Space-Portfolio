@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1709225158145,
+      "tag": "0000_long_wallflower",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1709226265227,
+      "tag": "0001_known_donald_blake",
+      "breakpoints": true
+    }
+  ]
+}
