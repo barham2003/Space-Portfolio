@@ -1,5 +1,5 @@
 "use client";
-import { sendEmail } from "@/actions";
+import { sendEmail } from "@/actions/email-action";
 import AnimateSection from "./ui/animate-section";
 import FormButton from "./ui/form-button";
 import Heading from "./ui/heading";
@@ -36,7 +36,11 @@ export default function ContactUs() {
           >
             {message}
           </span>
-          <FormButton className=" rounded-full font-bold" type="submit">
+          <FormButton
+            variant="space"
+            className=" rounded-sm font-bold"
+            type="submit"
+          >
             Send Email
           </FormButton>
         </form>
