@@ -15,6 +15,13 @@
       "when": 1709226265227,
       "tag": "0001_known_donald_blake",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1709266125206,
+      "tag": "0002_mysterious_domino",
+      "breakpoints": true
     }
   ]
 }

@@ -4,7 +4,7 @@ import Heading from "./ui/heading";
 export default function About() {
   return (
     <AnimateSection className="scroll-mt-20" id="about">
-      <section className="px-3 leading-[35px] md:leading-[50px]">
+      <section className="leading-[35px] md:leading-[50px]">
         <Heading>About Us</Heading>
         <p>
           Space is a forward-thinking organization dedicated to revolutionizing
