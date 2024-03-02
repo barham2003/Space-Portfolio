@@ -16,6 +16,8 @@ export const courses = pgTable("courses", {
   status: text("status").notNull(),
   startDate: timestamp("start_date").notNull(),
   instructor: text("instructor").notNull(),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  priority: integer("priority").notNull().default(0),
 });
 
 export const courseRelations = relations(courses, ({ many }) => ({

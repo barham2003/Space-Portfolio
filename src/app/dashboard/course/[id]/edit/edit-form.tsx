@@ -1,5 +1,5 @@
 "use client";
-import { AddCourse, getOneCourse } from "@/actions";
+import { AddCourse, editCourse, getOneCourse } from "@/actions";
 import FormButton from "@/components/ui/form-button";
 import Heading from "@/components/ui/heading";
 import { Input } from "@/components/ui/input";
@@ -18,7 +18,7 @@ export default function EditCourse({ id }: { id: number }) {
     fetchData();
   }, [id]);
 
-  const [{ message, status }, formAction] = useFormState(AddCourse, {
+  const [{ message, status }, formAction] = useFormState(editCourse, {
     message: "",
   });
 
@@ -60,6 +60,12 @@ export default function EditCourse({ id }: { id: number }) {
           type="text"
           defaultValue={course.status}
           name="status"
+        />{" "}
+        <Input
+          placeholder="Priority"
+          type="number"
+          defaultValue={course.priority}
+          name="priority"
         />
         <Input
           placeholder="Description"

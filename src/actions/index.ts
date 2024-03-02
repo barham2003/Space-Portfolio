@@ -2,8 +2,8 @@
 
 import { db } from "@/db";
 import { courses, forms, session } from "@/db/schema";
-import { eq } from "drizzle-orm";
-import { revalidatePath } from "next/cache";
+import { desc, eq } from "drizzle-orm";
+import { revalidateTag, unstable_cache as unstable } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import * as zod from "zod";
@@ -19,6 +19,7 @@ const courseSchema = zod.object({
   status: zod.string().min(1),
   instructor: zod.string().min(1),
   startDate: zod.date(),
+  priority: zod.number().min(0),
 });
 
 export async function AddCourse(
@@ -34,8 +35,8 @@ export async function AddCourse(
     status: formData.get("status") as string,
     instructor: formData.get("instructor") as string,
     startDate: new Date(formData.get("startDate") as string),
+    priority: Number(formData.get("priority") as string),
   });
-  console.log(formData.get("startDate"));
 
   if (!result.success) {
     return {
@@ -47,40 +48,51 @@ export async function AddCourse(
   }
 
   await db.insert(courses).values(result.data);
-
-  revalidatePath("/dashboard");
-  revalidatePath("/courses");
+  revalidateTag("courses");
   redirect("/dashboard");
 }
 
 export async function getCourses() {
-  // await new Promise((resolve) => setTimeout(resolve, 5000));
-  const courses = db.query.courses.findMany();
-  return courses;
+  const getUnstableCourses = unstable(
+    async () => db.select().from(courses).orderBy(desc(courses.priority)),
+    ["courses"],
+    { tags: ["courses"] },
+  );
+  const Gottencourses = getUnstableCourses();
+  return Gottencourses;
 }
 
 export async function getOneCourse(id: number) {
   // await new Promise((resolve) => setTimeout(resolve, 5000));
 
-  const course = await db.query.courses.findFirst({
-    where: (courses, { eq }) => {
-      return eq(courses.id, id);
-    },
-  });
+  const getUnstableCourse = unstable(
+    async (id) =>
+      db.query.courses.findFirst({
+        where: (courses, { eq }) => {
+          return eq(courses.id, id);
+        },
+      }),
 
+    [`c${id}`],
+    { tags: [`c${id}`] },
+  );
+
+  const course = getUnstableCourse(id);
   return course;
 }
 
 export async function DeleteCourse(id: number) {
+  await Protect();
   await db.delete(courses).where(eq(courses.id, id));
-  revalidatePath("/dashboard");
-  revalidatePath("/courses");
+  revalidateTag("courses");
 }
 
 export async function editCourse(
   formState: FormState,
   formData: FormData,
 ): Promise<FormState> {
+  await Protect();
+
   const id = Number(formData.get("id"));
   const result = courseSchema.safeParse({
     name: formData.get("name") as string,
@@ -89,6 +101,7 @@ export async function editCourse(
     status: formData.get("status") as string,
     instructor: formData.get("instructor") as string,
     startDate: new Date(formData.get("startDate") as string),
+    priority: Number(formData.get("priority") as string),
   });
 
   if (!result.success) {
@@ -102,10 +115,8 @@ export async function editCourse(
 
   await db.update(courses).set(result.data).where(eq(courses.id, id));
 
-  revalidatePath("/dashboard");
-  revalidatePath("/courses");
-  revalidatePath(`/courses/${id}`);
-
+  revalidateTag("courses");
+  revalidateTag(`c${id}`);
   redirect("/dashboard");
 }
 

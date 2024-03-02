@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import CourseShow from "./course-show";
 import CourseSkeleton from "./course-skeleton";
+import { getCourses } from "@/actions";
 
 export default async function page({
   params: { id },
@@ -14,4 +15,11 @@ export default async function page({
       </Suspense>
     </main>
   );
+}
+
+export async function generateStaticParams() {
+  const courses = await getCourses();
+  return courses.map((course) => ({
+    id: course.id.toString(),
+  }));
 }

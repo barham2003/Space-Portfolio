@@ -26,6 +26,7 @@ export default function Page() {
         <Input placeholder="Name" type="text" name="name" />
         <Input placeholder="Instructor" type="text" name="instructor" />
         <Input placeholder="Status" type="text" name="status" />
+        <Input placeholder="Priority" type="number" name="priority" />
         <Input placeholder="Description" type="text" name="description" />
         <Input placeholder="Image" type="text" name="image" />
         <Input placeholder="Start Date" type="date" name="startDate" />
