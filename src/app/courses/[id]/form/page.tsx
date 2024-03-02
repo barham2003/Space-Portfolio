@@ -4,7 +4,7 @@ import { addForm } from "@/actions";
 import FormButton from "@/components/ui/form-button";
 import Heading from "@/components/ui/heading";
 import { Input } from "@/components/ui/input";
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormState } from "react-dom";
 import { twMerge } from "tailwind-merge";
 
 export default function Page({ params: { id } }: { params: { id: string } }) {

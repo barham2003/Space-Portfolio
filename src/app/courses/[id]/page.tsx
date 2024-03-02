@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-import SkeletonCard from "../skeleton-card";
 import CourseShow from "./course-show";
 import CourseSkeleton from "./course-skeleton";
 
