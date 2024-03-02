@@ -1,5 +1,12 @@
 import { InferInsertModel, InferSelectModel, relations } from "drizzle-orm";
-import { date, integer, pgTable, serial, text } from "drizzle-orm/pg-core";
+import {
+  date,
+  integer,
+  pgTable,
+  serial,
+  text,
+  timestamp,
+} from "drizzle-orm/pg-core";
 
 export const courses = pgTable("courses", {
   id: serial("id").primaryKey(),
@@ -20,6 +27,8 @@ export const forms = pgTable("forms", {
   university: text("university").notNull(),
   age: integer("age").notNull(),
   courseId: integer("course_id").notNull(),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  phone: text("phone").notNull(),
 });
 
 export const formRelations = relations(forms, ({ one }) => ({

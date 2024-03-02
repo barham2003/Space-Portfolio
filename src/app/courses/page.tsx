@@ -1,8 +1,7 @@
 import Heading from "@/components/ui/heading";
 import CourseList from "./course-list";
 import { Suspense } from "react";
-import { Skeleton } from "@/components/ui/skeleton";
-import SkeletonCard from "./loading";
+import SkeletonCard from "./skeleton-card";
 export default async function page() {
   return (
     <main>

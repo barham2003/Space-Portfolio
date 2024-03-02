@@ -1,4 +1,3 @@
-"use client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 export default function SkeletonCard() {
@@ -16,9 +15,7 @@ export default function SkeletonCard() {
         <div className="w-full overflow-hidden rounded-md">
           <Skeleton className="h-[120px] lg:h-[400px]" />
         </div>
-        <p className="text-justify text-xs">
-          <Skeleton className="h-[20px]" />
-        </p>
+        <Skeleton className="h-[20px]" />
         <ul className="text-xs">
           <li>
             <Skeleton className="h-[20px]" />

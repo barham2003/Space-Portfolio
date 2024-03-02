@@ -22,6 +22,34 @@
       "when": 1709266125206,
       "tag": "0002_mysterious_domino",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1709364442904,
+      "tag": "0003_boring_logan",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1709364687624,
+      "tag": "0004_majestic_annihilus",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1709364949687,
+      "tag": "0005_fuzzy_nextwave",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1709364984083,
+      "tag": "0006_tidy_baron_zemo",
+      "breakpoints": true
     }
   ]
 }
