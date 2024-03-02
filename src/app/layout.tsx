@@ -13,7 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className=" relative h-full w-[100%] !scroll-smooth p-4 selection:bg-slate-500/20 lg:px-20">
+      <body className=" relative h-full w-[100%] !scroll-smooth p-4 py-10 selection:bg-slate-500/20 lg:px-20">
         {children}
       </body>
     </html>

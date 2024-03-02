@@ -50,6 +50,34 @@
       "when": 1709364984083,
       "tag": "0006_tidy_baron_zemo",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1709369164561,
+      "tag": "0007_sloppy_gateway",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1709369218055,
+      "tag": "0008_burly_echo",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1709369271498,
+      "tag": "0009_ordinary_the_twelve",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1709369932650,
+      "tag": "0010_flawless_gauntlet",
+      "breakpoints": true
     }
   ]
 }

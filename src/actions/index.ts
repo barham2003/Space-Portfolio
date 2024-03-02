@@ -1,7 +1,10 @@
 "use server";
 
 import { db } from "@/db";
-import { forms } from "@/db/schema";
+import { forms, session } from "@/db/schema";
+import { eq } from "drizzle-orm";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import * as zod from "zod";
 interface FormState {
   message: string;
@@ -64,4 +67,71 @@ export async function addForm(
   await db.insert(forms).values(result.data);
 
   return { message: "Successfully Added", status: "success" };
+}
+
+const signInSchema = zod.object({
+  username: zod.string(),
+  password: zod.string(),
+});
+
+const user = {
+  username: "space",
+  password: "123",
+};
+
+export async function signIn(
+  formState: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  const result = signInSchema.safeParse({
+    username: formData.get("username") as string,
+    password: formData.get("password") as string,
+  });
+
+  if (!result.success) {
+    return {
+      message: JSON.stringify(
+        Object.values(result.error.flatten().fieldErrors).join(", "),
+      ),
+      status: "error",
+    };
+  }
+
+  if (
+    result.data.username !== user.username ||
+    result.data.password !== user.password
+  ) {
+    return { message: "Invalid Credentials", status: "error" };
+  }
+
+  const [newSession] = await db
+    .insert(session)
+    .values({})
+    .returning({ id: session.id });
+
+  console.log(newSession.id);
+  cookies().set({ secure: true, value: `${newSession.id}`, name: "sessionId" });
+
+  return { message: "Successfully Signed In", status: "success" };
+}
+
+export async function Protect() {
+  const sessionId = Number(cookies().get("sessionId")?.value);
+  if (!sessionId) redirect("/auth");
+  const theSession = await db.query.session.findFirst({
+    where(sessions, { eq }) {
+      return eq(sessions.id, sessionId);
+    },
+  });
+
+  if (!theSession) {
+    cookies().delete("sessionId");
+    redirect("/auth");
+  }
+
+  if (Date.now() > new Date(theSession.createdAt).getTime() + 1000 * 60 * 60) {
+    cookies().delete("sessionId");
+    await db.delete(session).where(eq(session.id, sessionId));
+    redirect("/auth");
+  }
 }

@@ -48,7 +48,7 @@ export const apps = pgTable("apps", {
 
 export const session = pgTable("session", {
   id: serial("id").primaryKey(),
-  createdAt: date("created_at").notNull(),
+  createdAt: date("created_at").notNull().defaultNow(),
 });
 
 export type Course = InferSelectModel<typeof courses>;
