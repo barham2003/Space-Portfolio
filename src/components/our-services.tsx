@@ -1,8 +1,15 @@
 import { ourServices } from "@/lib/services";
 import Heading from "./ui/heading";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import AnimateSection from "./ui/animate-section";
 import Link from "next/link";
+import { Button } from "./ui/button";
 
 export default function OurServices() {
   return (
@@ -26,6 +33,16 @@ export default function OurServices() {
                   {service.description}
                 </p>
               </CardContent>
+              <CardFooter>
+                {service.title === "Courses" && (
+                  <Link
+                    href={service.link}
+                    className="w-full text-center hover:underline"
+                  >
+                    View Courses
+                  </Link>
+                )}
+              </CardFooter>
             </Card>
           ))}
         </div>

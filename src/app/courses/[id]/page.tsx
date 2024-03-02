@@ -9,7 +9,7 @@ export default async function page({
   params: { id: string };
 }) {
   return (
-    <main className="space-y-4 lg:px-52">
+    <main className="space-y-4 md:px-20 xl:px-64">
       <Suspense fallback={<CourseSkeleton />}>
         <CourseShow id={+id} />
       </Suspense>

@@ -15,7 +15,7 @@ export async function getCourses() {
 }
 
 export async function getOneCourse(id: number) {
-  await new Promise((resolve) => setTimeout(resolve, 5000));
+  // await new Promise((resolve) => setTimeout(resolve, 5000));
 
   const course = await db.query.courses.findFirst({
     where(courses, { eq }) {
