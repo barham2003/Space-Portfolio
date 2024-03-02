@@ -1,10 +1,11 @@
-import { Protect, getCourses, signOut } from "@/actions";
+import { Protect, signOut } from "@/actions";
 import FormButton from "@/components/ui/form-button";
 import Heading from "@/components/ui/heading";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import Table from "./table";
+import Table from "./shad-table/table";
 import { Suspense } from "react";
+import TableSkeleton from "./shad-table/skeleton-table";
 
 export default async function page() {
   await Protect();
@@ -17,7 +18,7 @@ export default async function page() {
       <Button asChild variant="space" className="w-full">
         <Link href="/dashboard/course/new">Add Course</Link>
       </Button>
-      <Suspense>
+      <Suspense fallback={<TableSkeleton />}>
         <Table />
       </Suspense>
     </main>

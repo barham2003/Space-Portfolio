@@ -63,7 +63,7 @@ export async function getOneCourse(id: number) {
   // await new Promise((resolve) => setTimeout(resolve, 5000));
 
   const course = await db.query.courses.findFirst({
-    where(courses, { eq }) {
+    where: (courses, { eq }) => {
       return eq(courses.id, id);
     },
   });
@@ -75,6 +75,38 @@ export async function DeleteCourse(id: number) {
   await db.delete(courses).where(eq(courses.id, id));
   revalidatePath("/dashboard");
   revalidatePath("/courses");
+}
+
+export async function editCourse(
+  formState: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  const id = Number(formData.get("id"));
+  const result = courseSchema.safeParse({
+    name: formData.get("name") as string,
+    image: formData.get("image") as string,
+    description: formData.get("description") as string,
+    status: formData.get("status") as string,
+    instructor: formData.get("instructor") as string,
+    startDate: new Date(formData.get("startDate") as string),
+  });
+
+  if (!result.success) {
+    return {
+      message: JSON.stringify(
+        Object.values(result.error.flatten().fieldErrors).join(", "),
+      ),
+      status: "error",
+    };
+  }
+
+  await db.update(courses).set(result.data).where(eq(courses.id, id));
+
+  revalidatePath("/dashboard");
+  revalidatePath("/courses");
+  revalidatePath(`/courses/${id}`);
+
+  redirect("/dashboard");
 }
 
 const formSchema = zod.object({
@@ -171,14 +203,12 @@ export async function Protect() {
   const sessionId = Number(cookies().get("sessionId")?.value);
   if (!sessionId) redirect("/auth");
   const theSession = await db.query.session.findFirst({
-    where(sessions, { eq }) {
+    where: (sessions, { eq }) => {
       return eq(sessions.id, sessionId);
     },
   });
 
-  if (!theSession) {
-    redirect("/auth");
-  }
+  if (!theSession) redirect("/auth");
 
   if (
     Date.now() >
@@ -204,7 +234,7 @@ export async function isAuth(): Promise<boolean> {
   if (!sessionId) return false;
 
   const theSession = await db.query.session.findFirst({
-    where(sessions, { eq }) {
+    where: (sessions, { eq }) => {
       return eq(sessions.id, sessionId);
     },
   });
