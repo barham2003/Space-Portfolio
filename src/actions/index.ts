@@ -1,8 +1,9 @@
 "use server";
 
 import { db } from "@/db";
-import { forms, session } from "@/db/schema";
+import { courses, forms, session } from "@/db/schema";
 import { eq } from "drizzle-orm";
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import * as zod from "zod";
@@ -27,6 +28,12 @@ export async function getOneCourse(id: number) {
   });
 
   return course;
+}
+
+export async function DeleteCourse(id: number) {
+  await db.delete(courses).where(eq(courses.id, id));
+  revalidatePath("/dashboard");
+  revalidatePath("/courses");
 }
 
 const formSchema = zod.object({
@@ -109,8 +116,12 @@ export async function signIn(
     .values({})
     .returning({ id: session.id });
 
-  console.log(newSession.id);
-  cookies().set({ secure: true, value: `${newSession.id}`, name: "sessionId" });
+  cookies().set({
+    // secure: true,
+    value: `${newSession.id}`,
+    name: "sessionId",
+    // httpOnly: true,
+  });
 
   return { message: "Successfully Signed In", status: "success" };
 }
@@ -125,13 +136,45 @@ export async function Protect() {
   });
 
   if (!theSession) {
-    cookies().delete("sessionId");
     redirect("/auth");
   }
 
-  if (Date.now() > new Date(theSession.createdAt).getTime() + 1000 * 60 * 60) {
-    cookies().delete("sessionId");
+  if (
+    Date.now() >
+    new Date(theSession.createdAt).getTime() + 1000 * 60 * 60 * 60
+  ) {
     await db.delete(session).where(eq(session.id, sessionId));
     redirect("/auth");
   }
+}
+
+export async function signOut() {
+  const sessionId = Number(cookies().get("sessionId")?.value);
+  if (sessionId) await db.delete(session).where(eq(session.id, sessionId));
+  cookies().delete("sessionId");
+}
+
+export async function deleteAllSessions() {
+  await db.delete(session);
+}
+
+export async function isAuth(): Promise<boolean> {
+  const sessionId = Number(cookies().get("sessionId")?.value);
+  if (!sessionId) return false;
+
+  const theSession = await db.query.session.findFirst({
+    where(sessions, { eq }) {
+      return eq(sessions.id, sessionId);
+    },
+  });
+  if (!theSession) return false;
+  if (
+    Date.now() >
+    new Date(theSession.createdAt).getTime() + 1000 * 60 * 60 * 60
+  ) {
+    await db.delete(session).where(eq(session.id, sessionId));
+    return false;
+  }
+
+  return true;
 }

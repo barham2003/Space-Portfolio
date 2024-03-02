@@ -1,29 +1,9 @@
-"use client";
-import { signIn } from "@/actions";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { useFormState } from "react-dom";
-import { twMerge } from "tailwind-merge";
+import { isAuth } from "@/actions";
+import AuthForm from "./auth-form";
+import { redirect } from "next/navigation";
 
-export default function Page() {
-  const [{ message, status }, formAction] = useFormState(signIn, {
-    message: "",
-  });
-  return (
-    <form action={formAction} className="flex flex-col gap-4">
-      <Input type="text" name="username" placeholder="Username" />
-      <Input type="password" name="password" placeholder="Password" />
-      <Button variant="space">Submit</Button>
-      {message && (
-        <span
-          className={twMerge(
-            "rounded-sm bg-secondary p-2 text-red-600 ",
-            status === "success" && "text-green-600",
-          )}
-        >
-          {message}
-        </span>
-      )}
-    </form>
-  );
+export default async function page() {
+  const authed = await isAuth();
+  if (authed) redirect("/dashboard");
+  return <AuthForm />;
 }
