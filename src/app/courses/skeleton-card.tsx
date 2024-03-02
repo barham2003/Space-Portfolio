@@ -6,14 +6,9 @@ export default function SkeletonCard() {
       className="group flex flex-col justify-between rounded-sm border-none bg-secondary/50 transition-all hover:bg-secondary"
       key={index}
     >
-      <CardHeader className="px-2 py-2">
-        <CardTitle className="text-md">
-          <Skeleton />
-        </CardTitle>{" "}
-      </CardHeader>
       <CardContent className="space-y-2 overflow-hidden px-2 py-2">
         <div className="w-full overflow-hidden rounded-md">
-          <Skeleton className="h-[120px] lg:h-[400px]" />
+          <Skeleton className="h-[300px] w-full object-cover transition-all group-hover:scale-110 lg:h-[400px]" />
         </div>
         <Skeleton className="h-[20px]" />
         <ul className="text-xs">

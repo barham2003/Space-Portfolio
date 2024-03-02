@@ -12,6 +12,47 @@ interface FormState {
   status?: "success" | "error" | "";
 }
 
+const courseSchema = zod.object({
+  name: zod.string().min(1),
+  image: zod.string().min(1),
+  description: zod.string().min(1),
+  status: zod.string().min(1),
+  instructor: zod.string().min(1),
+  startDate: zod.date(),
+});
+
+export async function AddCourse(
+  formState: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  Protect();
+
+  const result = courseSchema.safeParse({
+    name: formData.get("name") as string,
+    image: formData.get("image") as string,
+    description: formData.get("description") as string,
+    status: formData.get("status") as string,
+    instructor: formData.get("instructor") as string,
+    startDate: new Date(formData.get("startDate") as string),
+  });
+  console.log(formData.get("startDate"));
+
+  if (!result.success) {
+    return {
+      message: JSON.stringify(
+        Object.values(result.error.flatten().fieldErrors).join(", "),
+      ),
+      status: "error",
+    };
+  }
+
+  await db.insert(courses).values(result.data);
+
+  revalidatePath("/dashboard");
+  revalidatePath("/courses");
+  redirect("/dashboard");
+}
+
 export async function getCourses() {
   // await new Promise((resolve) => setTimeout(resolve, 5000));
   const courses = db.query.courses.findMany();

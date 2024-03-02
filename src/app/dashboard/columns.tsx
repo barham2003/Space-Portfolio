@@ -6,11 +6,12 @@ import { Button } from "@/components/ui/button";
 
 import Link from "next/link";
 import { DeleteCourse } from "@/actions";
+import FormButton from "@/components/ui/form-button";
 
 export const columns: ColumnDef<Course>[] = [
   {
     accessorKey: "name",
-    header: "name",
+    header: "Name",
   },
   {
     accessorKey: "status",
@@ -26,7 +27,7 @@ export const columns: ColumnDef<Course>[] = [
       const course = row.original;
       return (
         <Button variant="space">
-          <Link href={`/courses/${course.id}/edit`}>Edit</Link>
+          <Link href={`/dashboard/course/${course.id}/edit`}>Edit</Link>
         </Button>
       );
     },
@@ -35,10 +36,11 @@ export const columns: ColumnDef<Course>[] = [
     id: "delete",
     cell: ({ row }) => {
       const course = row.original;
+      const deleteAction = DeleteCourse.bind(null, course.id);
       return (
-        <Button variant="destructive">
-          <form action={DeleteCourse.bind(null, course.id)}>Delete</form>
-        </Button>
+        <form action={deleteAction}>
+          <FormButton variant="destructive">Delete</FormButton>
+        </form>
       );
     },
   },

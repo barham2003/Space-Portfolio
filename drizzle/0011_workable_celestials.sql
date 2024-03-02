@@ -1,0 +1,1 @@
+ALTER TABLE "courses" ADD COLUMN "start_date" timestamp NOT NULL;

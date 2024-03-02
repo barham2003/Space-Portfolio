@@ -14,6 +14,7 @@ export const courses = pgTable("courses", {
   description: text("description").notNull(),
   image: text("image").notNull(),
   status: text("status").notNull(),
+  startDate: timestamp("start_date").notNull(),
   instructor: text("instructor").notNull(),
 });
 
