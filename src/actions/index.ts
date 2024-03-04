@@ -157,6 +157,8 @@ export async function addForm(
 
   await db.insert(forms).values(result.data);
 
+  revalidateTag(`f${result.data.courseId}`);
+
   return { message: "Successfully Added", status: "success" };
 }
 

@@ -23,8 +23,8 @@ export default async function CourseList() {
                   src={course.image}
                   alt="course#1"
                   className="h-[300px] w-full object-cover transition-all group-hover:scale-110 lg:h-[400px]"
-                  width={200}
-                  height={200}
+                  width={900}
+                  height={900}
                 />
               </div>
             </CardContent>
