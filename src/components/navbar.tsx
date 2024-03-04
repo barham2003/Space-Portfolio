@@ -5,7 +5,7 @@ import Link from "next/link";
 import AnimateNav from "./ui/animate-nav";
 export default function Navbar() {
   return (
-    <AnimateNav className="fixed bottom-8 z-50 flex w-[93%] rounded-full border border-black/10 bg-secondary p-1 drop-shadow-2xl">
+    <AnimateNav className=" sticky top-[90%] z-50 flex w-full rounded-full border border-black/10 bg-secondary p-1 drop-shadow-2xl">
       <div className="w-[10%]">
         <Image src={spaceLogo} alt="Logo" className="w-[45px]" />
       </div>

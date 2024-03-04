@@ -18,7 +18,9 @@ export default function Introduction() {
           />
         </AnimatePosition>
         <AnimateDiv className="space-y-4 lg:w-[40%]">
-          <Heading className="md:text-left">Welcome to Space</Heading>
+          <Heading className="md:text-left" as="h1">
+            Explore our Space
+          </Heading>
           <p className="leading-[35px]">
             Space, your premier destination for cutting-edge courses and
             innovative digital solutions. At Space, we are committed to pushing

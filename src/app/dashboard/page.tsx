@@ -11,13 +11,15 @@ export default async function page() {
   await Protect();
   return (
     <main className="flex flex-col gap-3">
-      <form action={signOut}>
-        <FormButton variant="destructive">Signout</FormButton>
-      </form>
-      <form action={deleteAllSessions}>
-        <FormButton variant="destructive">Delete All Sessions</FormButton>
-      </form>
       <Heading>Dashboard</Heading>
+      <div className="flex gap-3">
+        <form action={signOut}>
+          <FormButton variant="destructive">Signout</FormButton>
+        </form>
+        <form action={deleteAllSessions}>
+          <FormButton variant="destructive">Delete All Sessions</FormButton>
+        </form>
+      </div>
       <Button asChild variant="space" className="w-full">
         <Link href="/dashboard/course/new">Add Course</Link>
       </Button>

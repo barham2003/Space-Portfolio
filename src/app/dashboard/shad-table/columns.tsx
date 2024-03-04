@@ -22,6 +22,17 @@ export const columns: ColumnDef<Course>[] = [
     header: "Instructor",
   },
   {
+    id: "view",
+    cell: ({ row }) => {
+      const course = row.original;
+      return (
+        <Button variant="space" asChild>
+          <Link href={`dashboard/course/${course.id}`}>View</Link>
+        </Button>
+      );
+    },
+  },
+  {
     id: "edit",
     cell: ({ row }) => {
       const course = row.original;
@@ -41,17 +52,6 @@ export const columns: ColumnDef<Course>[] = [
         <form action={deleteAction}>
           <FormButton variant="destructive">Delete</FormButton>
         </form>
-      );
-    },
-  },
-  {
-    id: "view",
-    cell: ({ row }) => {
-      const course = row.original;
-      return (
-        <Button variant="space" asChild>
-          <Link href={`dashboard/course/${course.id}`}>View</Link>
-        </Button>
       );
     },
   },
