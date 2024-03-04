@@ -25,6 +25,7 @@ export const courseRelations = relations(courses, ({ many }) => ({
 }));
 
 export const forms = pgTable("forms", {
+  id: serial("id").primaryKey(),
   name: text("name").notNull(),
   email: text("email").notNull(),
   university: text("university").notNull(),

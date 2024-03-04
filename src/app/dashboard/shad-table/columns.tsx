@@ -44,4 +44,15 @@ export const columns: ColumnDef<Course>[] = [
       );
     },
   },
+  {
+    id: "view",
+    cell: ({ row }) => {
+      const course = row.original;
+      return (
+        <Button variant="space">
+          <Link href={`dashboard/course/${course.id}`}>View</Link>
+        </Button>
+      );
+    },
+  },
 ];

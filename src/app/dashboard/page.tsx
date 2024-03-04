@@ -1,4 +1,4 @@
-import { Protect, signOut } from "@/actions";
+import { Protect, deleteAllSessions, signOut } from "@/actions";
 import FormButton from "@/components/ui/form-button";
 import Heading from "@/components/ui/heading";
 import { Button } from "@/components/ui/button";
@@ -13,6 +13,9 @@ export default async function page() {
     <main className="flex flex-col gap-3">
       <form action={signOut}>
         <FormButton variant="destructive">Signout</FormButton>
+      </form>
+      <form action={deleteAllSessions}>
+        <FormButton variant="destructive">Delete All Sessions</FormButton>
       </form>
       <Heading>Dashboard</Heading>
       <Button asChild variant="space" className="w-full">

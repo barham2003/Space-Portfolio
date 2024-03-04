@@ -160,6 +160,18 @@ export async function addForm(
   return { message: "Successfully Added", status: "success" };
 }
 
+export async function getForms(courseId: number) {
+  const getUnstableForms = unstable(
+    async (courseId) =>
+      db.select().from(forms).where(eq(forms.courseId, courseId)),
+    [`f${courseId}`],
+    { tags: [`f${courseId}`] },
+  );
+
+  const Gottenforms = await getUnstableForms(courseId);
+  return Gottenforms;
+}
+
 const signInSchema = zod.object({
   username: zod.string(),
   password: zod.string(),
@@ -237,6 +249,7 @@ export async function signOut() {
 }
 
 export async function deleteAllSessions() {
+  await Protect();
   await db.delete(session);
 }
 

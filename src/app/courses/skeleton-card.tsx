@@ -1,7 +1,7 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 export default function SkeletonCard() {
-  return Array.from({ length: 2 }).map((_, index) => (
+  return Array.from({ length: 6 }).map((_, index) => (
     <Card
       className="group flex flex-col justify-between rounded-sm border-none bg-secondary/50 transition-all hover:bg-secondary"
       key={index}
