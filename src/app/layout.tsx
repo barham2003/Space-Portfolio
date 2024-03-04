@@ -4,6 +4,16 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Space",
   description: "A Software Company",
+  keywords: [
+    "space",
+    "software",
+    "company",
+    "education",
+    "tech",
+    "learning",
+    "course",
+    "auis",
+  ],
 };
 
 export default function RootLayout({
