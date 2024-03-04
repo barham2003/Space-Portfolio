@@ -36,11 +36,7 @@ export default function ContactUs() {
           >
             {message}
           </span>
-          <FormButton
-            variant="space"
-            className=" rounded-sm font-bold"
-            type="submit"
-          >
+          <FormButton className=" rounded-sm font-bold" type="submit">
             Send Email
           </FormButton>
         </form>

@@ -16,8 +16,8 @@ export default async function CourseList() {
     <>
       {courses.map((course, index) => (
         <Link href={`/courses/${course.id}`} className="h-full" key={index}>
-          <Card className="group rounded-sm border-none bg-secondary/50 transition-all hover:bg-secondary">
-            <CardContent className="flex h-full flex-col justify-between gap-2 py-2">
+          <Card className="group space-y-2 rounded-sm border-none bg-secondary/50 transition-all hover:bg-secondary">
+            <CardContent className="flex h-full flex-col justify-between gap-2 px-0 pb-2">
               <div className="h-full w-full overflow-hidden rounded-md">
                 <Image
                   src={course.image}
@@ -28,8 +28,8 @@ export default async function CourseList() {
                 />
               </div>
             </CardContent>
-            <CardFooter className="flex flex-col items-start gap-1">
-              <CardTitle className="text-md">{course.name}</CardTitle>
+            <CardFooter className="flex flex-col items-start gap-1 px-3">
+              <CardTitle className="text-lg">{course.name}</CardTitle>
               <h3>Instructor: {course.instructor}</h3>
               <p className="text-justify text-xs">
                 {course.description.length > 80

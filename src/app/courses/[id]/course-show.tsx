@@ -47,7 +47,7 @@ export default async function CourseShow({ id }: { id: number }) {
       <h2 className="text-lg font-semibold">Instructor: {course.instructor}</h2>
       <p className="text-justify">{course.description}</p>
       {course.status === "active" && (
-        <Button asChild variant="space" className="w-full">
+        <Button asChild className="w-full">
           <Link href={`/courses/${course.id}/form`}>Sign Yourself</Link>
         </Button>
       )}

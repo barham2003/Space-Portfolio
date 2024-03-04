@@ -35,12 +35,11 @@ export default function OurServices() {
               </CardContent>
               <CardFooter>
                 {service.title === "Courses" && (
-                  <Link
-                    href={service.link}
-                    className="w-full text-center hover:underline"
-                  >
-                    View Courses
-                  </Link>
+                  <Button asChild>
+                    <Link href={service.link} className="w-full">
+                      View Courses
+                    </Link>
+                  </Button>
                 )}
               </CardFooter>
             </Card>

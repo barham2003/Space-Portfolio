@@ -59,9 +59,7 @@ export default function SignForm({ id }: { id: string }) {
         id="courseId"
         required
       />
-      <FormButton type="submit" variant={"space"}>
-        Submit
-      </FormButton>
+      <FormButton type="submit">Submit</FormButton>
     </form>
   );
 }

@@ -26,7 +26,7 @@ export const columns: ColumnDef<Course>[] = [
     cell: ({ row }) => {
       const course = row.original;
       return (
-        <Button variant="space">
+        <Button variant="space" asChild>
           <Link href={`/dashboard/course/${course.id}/edit`}>Edit</Link>
         </Button>
       );
@@ -49,7 +49,7 @@ export const columns: ColumnDef<Course>[] = [
     cell: ({ row }) => {
       const course = row.original;
       return (
-        <Button variant="space">
+        <Button variant="space" asChild>
           <Link href={`dashboard/course/${course.id}`}>View</Link>
         </Button>
       );
