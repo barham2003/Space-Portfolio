@@ -1,35 +1,9 @@
 import { getOneCourse } from "@/actions";
 import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/heading";
-import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-
-type Props = {
-  params: { id: string };
-};
-
-export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
-  // read route params
-  const id = params.id;
-
-  // fetch data
-  const course = await getOneCourse(+id);
-
-  // optionally access and extend (rather than replace) parent metadata
-  const previousImages = (await parent).openGraph?.images || [];
-
-  return {
-    title: course?.name,
-    openGraph: {
-      images: [course?.image || "", ...previousImages],
-    },
-  };
-}
 
 export default async function CourseShow({ id }: { id: number }) {
   const course = await getOneCourse(+id);
