@@ -3,6 +3,7 @@ import CourseList from "./course-list";
 import { Suspense } from "react";
 import SkeletonCard from "./skeleton-card";
 import { Metadata } from "next";
+import BackButton from "@/components/back-button";
 
 export const metadata: Metadata = {
   title: "Courses",
@@ -21,6 +22,7 @@ export default async function page() {
     <main>
       <section>
         <Heading>Our Courses</Heading>
+        <BackButton href="/" />
         <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           <Suspense fallback={<SkeletonCard />}>
             <CourseList />

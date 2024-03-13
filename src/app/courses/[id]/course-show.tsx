@@ -1,4 +1,5 @@
 import { getOneCourse } from "@/actions";
+import BackButton from "@/components/back-button";
 import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/heading";
 import Image from "next/image";
@@ -11,6 +12,7 @@ export default async function CourseShow({ id }: { id: number }) {
   return (
     <>
       <Heading>{course.name}</Heading>
+      <BackButton href="/courses" />
       <Image
         width="900"
         height={900}
