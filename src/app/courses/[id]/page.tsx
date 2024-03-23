@@ -3,6 +3,7 @@ import CourseShow from "./course-show";
 import CourseSkeleton from "./course-skeleton";
 import { getCourses, getOneCourse } from "@/actions";
 import { Metadata, ResolvingMetadata } from "next";
+import BackButton from "@/components/back-button";
 
 type Props = {
   params: { id: string };
@@ -36,7 +37,9 @@ export default async function page({
   params: { id: string };
 }) {
   return (
-    <main className="space-y-4 md:px-20 xl:px-64">
+    <main className="w-full gap-4  space-y-4">
+      <BackButton href="/courses" />
+
       <Suspense fallback={<CourseSkeleton />}>
         <CourseShow id={+id} />
       </Suspense>
