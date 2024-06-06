@@ -10,6 +10,8 @@ import {
 import AnimateSection from "./ui/animate-section";
 import Link from "next/link";
 import { Button } from "./ui/button";
+import { LinkPreview } from "./ui/link-preview";
+import { MovingBorder } from "./ui/moving-border";
 
 export default function OurServices() {
   return (
@@ -36,9 +38,9 @@ export default function OurServices() {
               <CardFooter>
                 {service.title === "Courses" && (
                   <Button asChild>
-                    <Link href={service.link} className="w-full">
+                    <LinkPreview url={service.link} className="w-full">
                       View Courses
-                    </Link>
+                    </LinkPreview>
                   </Button>
                 )}
               </CardFooter>
