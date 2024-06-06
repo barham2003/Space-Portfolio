@@ -6,12 +6,13 @@ import AnimatePosition from "./ui/left-to-right";
 import AnimateDiv from "./ui/animate-div";
 import { FlipWords } from "./ui/flip-words";
 import { SpaceSparkless } from "./space-sparkless";
+import { HoverBorderGradient } from "./ui/gradient-button";
 const words = ["Space", "Apps", "Services", "Team"];
 
 export default function Introduction() {
   return (
     <AnimateSection id="main" className="scroll-mt-48">
-      <section className="flex w-full flex-col items-center gap-4 md:flex-row md:justify-between md:gap-12 ">
+      <section className="flex w-full flex-col items-center gap-4 py-10 md:flex-row md:justify-center md:gap-12 ">
         <AnimatePosition toRight={true}>
           <Image
             src={spaceLogo}

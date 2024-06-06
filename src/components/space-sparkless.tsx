@@ -8,7 +8,7 @@ const words = ["Space", "Apps", "Services", "Team"];
 export function SpaceSparkless() {
   return (
     <div className="hidden h-[40rem] w-full flex-col items-center justify-center overflow-hidden rounded-md bg-white lg:flex">
-      <h1 className="relative z-20 text-center text-3xl font-bold text-black md:text-7xl lg:text-9xl">
+      <h1 className="relative z-20 text-center text-3xl font-bold text-black md:text-5xl lg:text-7xl">
         Space
       </h1>{" "}
       <div className="relative h-40 w-[40rem]">

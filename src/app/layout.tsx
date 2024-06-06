@@ -38,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="relative m-auto h-full w-full max-w-[1800px] !scroll-smooth px-4 py-4 pb-10 selection:bg-slate-500/20">
+      <body className="relative m-auto h-full w-full max-w-[1600px] !scroll-smooth px-4 py-4 pb-10 selection:bg-slate-500/20">
         {children}
       </body>
     </html>
