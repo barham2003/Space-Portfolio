@@ -15,11 +15,11 @@ export default async function CourseShow({ id }: { id: number }) {
         <Image
           width="900"
           height={900}
-          className=" w-full rounded-sm"
+          className=" w-full rounded-md"
           alt="course#1"
           src={course.image}
         />
-        <figcaption className="md:gap- gap-2w flex flex-col md:justify-between">
+        <figcaption className="flex flex-col gap-2 md:justify-between">
           <div>
             <h2 className="text-lg font-semibold">
               Instructor: {course.instructor}

@@ -63,7 +63,7 @@ export async function getCourses() {
 }
 
 export async function getOneCourse(id: number) {
-  // await new Promise((resolve) => setTimeout(resolve, 5000));
+  // await new Promise((resolve) => setTimeout(() => resolve, 1000));
 
   const getUnstableCourse = unstable(
     async (id) =>

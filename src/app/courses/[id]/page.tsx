@@ -37,7 +37,7 @@ export default async function page({
   params: { id: string };
 }) {
   return (
-    <main className="w-full gap-4  space-y-4">
+    <main className="w-full">
       <BackButton href="/courses" />
 
       <Suspense fallback={<CourseSkeleton />}>

@@ -3,26 +3,18 @@ import { AddCourse, editCourse, getOneCourse } from "@/actions";
 import FormButton from "@/components/ui/form-button";
 import Heading from "@/components/ui/heading";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import { Course } from "@/db/schema";
-import { useEffect, useState } from "react";
 import { useFormState } from "react-dom";
 
-export default function EditCourse({ id }: { id: number }) {
-  const [course, setCourse] = useState<Course>();
-  useEffect(() => {
-    async function fetchData() {
-      const theCourse = await getOneCourse(id);
-      if (!theCourse) return;
-      setCourse(theCourse);
-    }
-    fetchData();
-  }, [id]);
-
+export default function EditCourse({ course }: { course: Course }) {
   const [{ message, status }, formAction] = useFormState(editCourse, {
     message: "",
   });
 
+  console.log(course);
   if (!course) return null;
   return (
     <main>
@@ -56,12 +48,20 @@ export default function EditCourse({ id }: { id: number }) {
           defaultValue={course.instructor}
           name="instructor"
         />
-        <Input
-          placeholder="Status"
-          type="text"
-          defaultValue={course.status}
-          name="status"
-        />{" "}
+
+        <fieldset>
+          <label>Status</label>
+          <RadioGroup defaultValue="active" name="status">
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="active" id="active" />
+              <Label htmlFor="active">Active</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="deactivate" id="deactivate" />
+              <Label htmlFor="deactivate">Deactivate</Label>
+            </div>
+          </RadioGroup>
+        </fieldset>
         <Input
           placeholder="Priority"
           type="number"

@@ -1,11 +1,12 @@
 "use client";
 import { AddCourse, Protect } from "@/actions";
-import { Button } from "@/components/ui/button";
 import FormButton from "@/components/ui/form-button";
 import Heading from "@/components/ui/heading";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useFormState, useFormStatus } from "react-dom";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function AddCourseForm() {
   const [{ message, status }, formAction] = useFormState(AddCourse, {
@@ -26,7 +27,19 @@ export default function AddCourseForm() {
         )}
         <Input placeholder="Name" type="text" name="name" />
         <Input placeholder="Instructor" type="text" name="instructor" />
-        <Input placeholder="Status" type="text" name="status" />
+        <fieldset>
+          <label htmlFor="">Status</label>
+          <RadioGroup defaultValue="active" name="status">
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="active" id="active" />
+              <Label htmlFor="active">Active</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="deactivate" id="deactivate" />
+              <Label htmlFor="deactivate">Deactivate</Label>
+            </div>
+          </RadioGroup>
+        </fieldset>
         <Input placeholder="Priority" type="number" name="priority" />
         <Input placeholder="Image" type="text" name="image" />
         <Textarea placeholder="Description" name="description" />

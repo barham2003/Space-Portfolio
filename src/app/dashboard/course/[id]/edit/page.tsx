@@ -1,14 +1,15 @@
 import { Suspense } from "react";
 import EditForm from "./edit-form";
-import { Protect } from "@/actions";
+import { Protect, getOneCourse } from "@/actions";
 
 export default async function page({ params }: { params: { id: string } }) {
-  await Protect();
+  const course = await getOneCourse(+params.id);
+  if (!course) return null;
 
   return (
     <main>
-      <Suspense fallback={null}>
-        <EditForm id={+params.id} />
+      <Suspense fallback={"loading"}>
+        <EditForm course={course} />
       </Suspense>
     </main>
   );
