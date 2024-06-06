@@ -13,7 +13,7 @@ import { Button } from "./ui/button";
 
 export default function OurServices() {
   return (
-    <AnimateSection id="services" className="scroll-mt-20">
+    <AnimateSection id="services" className="scroll-mt-0">
       <section>
         <Heading>Our Services</Heading>
         <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">

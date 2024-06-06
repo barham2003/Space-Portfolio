@@ -4,11 +4,14 @@ import Heading from "./ui/heading";
 import AnimateSection from "./ui/animate-section";
 import AnimatePosition from "./ui/left-to-right";
 import AnimateDiv from "./ui/animate-div";
+import { FlipWords } from "./ui/flip-words";
+import { SpaceSparkless } from "./space-sparkless";
+const words = ["Space", "Apps", "Services", "Team"];
 
 export default function Introduction() {
   return (
     <AnimateSection id="main" className="scroll-mt-48">
-      <section className="flex w-full flex-col items-center gap-4 md:flex-row md:justify-center md:gap-12 ">
+      <section className="flex w-full flex-col items-center gap-4 md:flex-row md:justify-between md:gap-12 ">
         <AnimatePosition toRight={true}>
           <Image
             src={spaceLogo}
@@ -17,16 +20,15 @@ export default function Introduction() {
             priority
           />
         </AnimatePosition>
-        <AnimateDiv className="space-y-4 lg:w-[40%]">
-          <Heading className="md:text-left" as="h1">
-            Explore our Space
-          </Heading>
-          <p className="leading-[35px]">
-            Space, your premier destination for cutting-edge courses and
-            innovative digital solutions. At Space, we are committed to pushing
-            the boundaries of education and technology to empower individuals
-            and organizations worldwide.
-          </p>
+
+        <AnimateDiv className="space-y-4">
+          <div className="lg:hidden">
+            <Heading as="h1">Welcome to Space</Heading>
+            <Heading as="h2" className="break-words font-normal ">
+              from here you can explore our <FlipWords words={words} />
+            </Heading>
+          </div>
+          <SpaceSparkless />
         </AnimateDiv>
       </section>
     </AnimateSection>
