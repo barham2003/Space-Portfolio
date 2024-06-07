@@ -2,7 +2,6 @@
 import { sendEmail } from "@/actions/email-action";
 import AnimateSection from "./ui/animate-section";
 import FormButton from "./ui/form-button";
-import Heading from "./ui/heading";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { useFormState } from "react-dom";
@@ -19,7 +18,18 @@ export default function ContactUs() {
     <AnimateSection id="contact" className="w-full">
       <section className="w-full">
         <form action={formAction} className="flex w-full flex-col gap-4">
-          <TypewriterEffect words={[{ text: "Contact" }, { text: "Us" }]} />
+          <TypewriterEffect
+            words={[
+              {
+                text: "Contact",
+                className: "my-8 text-center text-2xl font-bold lg:text-4xl",
+              },
+              {
+                text: "Us",
+                className: "my-8 text-center text-2xl font-bold lg:text-4xl",
+              },
+            ]}
+          />
           <Input placeholder="Email" type="email" name="senderEmail" />
           <Textarea
             placeholder="Type Your Content Here"
