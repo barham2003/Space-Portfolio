@@ -4,15 +4,12 @@ import Heading from "./ui/heading";
 import AnimateSection from "./ui/animate-section";
 import AnimatePosition from "./ui/left-to-right";
 import AnimateDiv from "./ui/animate-div";
-import { FlipWords } from "./ui/flip-words";
 import { SpaceSparkless } from "./space-sparkless";
-import { HoverBorderGradient } from "./ui/gradient-button";
-const words = ["Space", "Apps", "Services", "Team"];
 
 export default function Introduction() {
   return (
     <AnimateSection id="main" className="scroll-mt-48">
-      <section className="flex w-full flex-col items-center gap-4 py-10 md:flex-row md:justify-center md:gap-12 ">
+      <section className="flex w-full flex-col items-center gap-4 py-10 lg:flex-row lg:justify-center lg:gap-12 ">
         <AnimatePosition toRight={true}>
           <Image
             src={spaceLogo}
@@ -23,12 +20,6 @@ export default function Introduction() {
         </AnimatePosition>
 
         <AnimateDiv className="space-y-4">
-          <div className="lg:hidden">
-            <Heading as="h1">Welcome to Space</Heading>
-            <Heading as="h2" className="break-words font-normal ">
-              from here you can explore our <FlipWords words={words} />
-            </Heading>
-          </div>
           <SpaceSparkless />
         </AnimateDiv>
       </section>

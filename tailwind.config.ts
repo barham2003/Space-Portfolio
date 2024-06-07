@@ -86,7 +86,7 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), addVariablesForColors,],
+  plugins: [require("tailwindcss-animate"), addVariablesForColors, require('tailwindcss-debug-screens'),],
 } satisfies Config
 
 
