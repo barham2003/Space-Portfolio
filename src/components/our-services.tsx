@@ -11,15 +11,15 @@ import AnimateSection from "./ui/animate-section";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { LinkPreview } from "./ui/link-preview";
-import { MovingBorder } from "./ui/moving-border";
+import { HoverEffect } from "./ui/card-hover-effect";
 
 export default function OurServices() {
   return (
     <AnimateSection id="services" className="scroll-mt-0">
       <section>
         <Heading>Our Services</Heading>
-        <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
-          {ourServices.map((service, index) => (
+        <HoverEffect items={ourServices} />
+        {/* {ourServices.map((service, index) => (
             <Card key={index}>
               <CardHeader>
                 <CardTitle className="text-center text-2xl font-bold lg:text-3xl">
@@ -45,8 +45,7 @@ export default function OurServices() {
                 )}
               </CardFooter>
             </Card>
-          ))}
-        </div>
+          ))} */}
       </section>
     </AnimateSection>
   );
