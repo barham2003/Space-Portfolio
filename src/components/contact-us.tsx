@@ -7,6 +7,7 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { useFormState } from "react-dom";
 import { twMerge } from "tailwind-merge";
+import { TypewriterEffect, TypewriterEffectSmooth } from "./ui/type-writer";
 
 export default function ContactUs() {
   const [{ message, done }, formAction] = useFormState(sendEmail, {
@@ -18,12 +19,11 @@ export default function ContactUs() {
     <AnimateSection id="contact" className="w-full">
       <section className="w-full">
         <form action={formAction} className="flex w-full flex-col gap-4">
-          <Heading>Contact Us</Heading>
-
+          <TypewriterEffect words={[{ text: "Contact" }, { text: "Us" }]} />
           <Input placeholder="Email" type="email" name="senderEmail" />
           <Textarea
             placeholder="Type Your Content Here"
-            className="h-[400px]"
+            className="h-[300px]"
             name="message"
           />
           <span
@@ -36,7 +36,7 @@ export default function ContactUs() {
           >
             {message}
           </span>
-          <FormButton className=" rounded-sm font-bold" type="submit">
+          <FormButton className="shimmer" type="submit">
             Send Email
           </FormButton>
         </form>
